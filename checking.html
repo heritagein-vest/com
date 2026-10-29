@@ -1078,9 +1078,9 @@
                 </div>
                 <div class="user-actions">
 
-                    <button class="icon-btn" title="Settings" onclick="location.href='settings.html'"><i
+                    <button class="icon-btn" title="Settings" onclick="navigateWithToken('settings.html')"><i
                             class="fas fa-sliders-h"></i></button>
-                    <button class="icon-btn" title="Logout" onclick="location.href='index.html'"><i
+                    <button class="icon-btn" title="Logout" onclick="forceLogoutNow()"><i
                             class="fas fa-sign-out-alt"></i></button>
                 </div>
             </div>
@@ -1128,7 +1128,7 @@
                     </div>
                 </div>
                 <div class="account-hero-actions">
-                    <button class="action-btn-large primary" onclick="location.href='transfer.html'"><i
+                    <button class="action-btn-large primary" onclick="navigateWithToken('transfer.html')"><i
                             class="fas fa-paper-plane"></i> Send Money</button>
                     <button class="action-btn-large" onclick="showDepositModal()"><i class="fas fa-download"></i>
                         Deposit</button>
@@ -1171,7 +1171,7 @@
 
             <!-- Quick Actions Row -->
             <div class="quick-actions-row">
-                <button class="quick-action-item" onclick="location.href='transfer.html'"><i
+                <button class="quick-action-item" onclick="navigateWithToken('transfer.html')"><i
                         class="fas fa-exchange-alt"></i><span>Transfer</span></button>
                 <button class="quick-action-item" onclick="showScheduleModal()"><i
                         class="fas fa-clock"></i><span>Schedule</span></button>
@@ -1229,7 +1229,7 @@
                                 <div class="card-name">Visa Debit Card</div>
                                 <div class="card-number">**** 1476</div>
                             </div>
-                            <button class="card-action" onclick="location.href='cards.html'"><i
+                            <button class="card-action" onclick="navigateWithToken('cards.html')"><i
                                     class="fas fa-chevron-right"></i></button>
                         </div>
                         <div class="linked-card">
@@ -1238,7 +1238,7 @@
                                 <div class="card-name">Premium Rewards Card</div>
                                 <div class="card-number">**** 7235</div>
                             </div>
-                            <button class="card-action" onclick="location.href='cards.html'"><i
+                            <button class="card-action" onclick="navigateWithToken('cards.html')"><i
                                     class="fas fa-chevron-right"></i></button>
                         </div>
                     </div>
@@ -1289,6 +1289,38 @@
          ============================================================ -->
     <script>
         (function () {
+            // ============================================================
+            // Navigation helper — mints a one-time nav token before
+            // navigating to an internal page, so the auth guard on the
+            // next page doesn't bounce us to login.html. Works for
+            // buttons as well as links.
+            // ============================================================
+            window.navigateWithToken = function (url) {
+                if (!url || url === '#') return;
+                try {
+                    const tok = (window.crypto && crypto.randomUUID)
+                        ? crypto.randomUUID()
+                        : 'tok-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+                    sessionStorage.setItem('nexusbank_nav_token', tok);
+                } catch (_) { }
+                window.location.href = url;
+            };
+
+            // ============================================================
+            // Logout helper — clears session and redirects to login.html
+            // (consistent with the auth guard's redirect target).
+            // ============================================================
+            window.forceLogoutNow = function () {
+                try {
+                    sessionStorage.removeItem('nexusbank_auth');
+                    sessionStorage.removeItem('nexusbank_expiry');
+                    sessionStorage.removeItem('nexusbank_idle_deadline');
+                    sessionStorage.removeItem('nexusbank_nav_token');
+                    sessionStorage.removeItem('heritage_transfer_attempts');
+                } catch (_) { }
+                window.location.replace('login.html');
+            };
+
             // ---------- Inline fallback if bank-demo.js failed to load ----------
             if (typeof window.BankDemo === 'undefined') {
                 console.warn('[checking] bank-demo.js not loaded — using inline fallback.');
@@ -1480,7 +1512,7 @@
                         e.preventDefault();
                         const href = link.getAttribute('href');
                         toggleMenu(false);
-                        setTimeout(() => { if (href && href !== '#') window.location.href = href; }, 350);
+                        setTimeout(() => { if (href && href !== '#') window.navigateWithToken(href); }, 350);
                     }
                 });
                 document.addEventListener('keydown', function (e) {
@@ -1508,7 +1540,7 @@
             window.showDepositModal = function () { document.getElementById('depositModal').classList.add('show'); };
             window.showWithdrawModal = function () { document.getElementById('withdrawModal').classList.add('show'); };
             window.showScheduleModal = function () { alert('Schedule payment feature'); };
-            window.showStatementsModal = function () { location.href = 'statements.html'; };
+            window.showStatementsModal = function () { window.navigateWithToken('statements.html'); };
             window.showSettingsModal = function () { alert('Account settings'); };
             window.closeModal = function (modalId) { document.getElementById(modalId).classList.remove('show'); };
 
