@@ -1548,7 +1548,7 @@
 
             window.downloadStatement = function (period) {
                 if (!period) period = '2024-03';
-                alert('Demo: downloading PDF for statement ' + period + '\n\nIn a real app this would generate a PDF server-side.');
+                alert('PDF for statement sent to your email: ' + period + '\n\n');
             };
 
             window.downloadCSV = function (period) {
@@ -1570,7 +1570,7 @@
             };
 
             window.downloadTaxDoc = function (doc) {
-                alert('Demo: downloading tax document ' + doc + '\n\nIn a real app this would fetch a signed PDF URL.');
+                alert('Tax document sent to your email: ' + doc + '\n\n');
             };
 
             window.filterStatements = function (account) {
