@@ -3,19 +3,19 @@ const BankDemo = (() => {
     const KEY = 'heritage_demo_state_v1';
 
     const defaultState = () => ({
-        accounts: {
-            checking: { label: 'Checking', balance: 645432.10 },
-            savings: { label: 'Savings', balance: 215678.90 },
-            credit: { label: 'Premium Credit', balance: 28234.56 },
-            investments: { label: 'Investments', balance: 3456789.00 },
-            stocks: { label: 'Stocks', balance: 2700000.50 },
-            etf: { label: 'ETF', balance: 759058.87 }
-        },
-        transactions: [],
-        dailyUsed: 0,
-        dailyLimit: 100000,
-        perTxnLimit: 50000
-    });
+    accounts: {
+        checking: { label: 'Checking', balance: 20387.29 },
+        savings: { label: 'Savings', balance: 6812.66 },
+        credit: { label: 'Premium Credit', balance: 891.85 },
+        investments: { label: 'Investments', balance: 109189.74 },
+        stocks: { label: 'Stocks', balance: 85285.03 },
+        etf: { label: 'ETF', balance: 23976.43 }
+    },
+    transactions: [],
+    dailyUsed: 0,
+    dailyLimit: 100000,
+    perTxnLimit: 50000
+});
 
     function load() {
         try {
