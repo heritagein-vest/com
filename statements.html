@@ -1178,7 +1178,7 @@
                         <i class="fas fa-file-invoice"></i>
                         <div>
                             <div class="tax-title">1099-INT - Interest Income</div>
-                            <div class="tax-year">Tax Year 2025</div>
+                            <div class="tax-year">Tax Year 2023</div>
                         </div>
                     </div>
                     <button class="tax-download" onclick="downloadTaxDoc('1099-2025')"><i
@@ -1189,7 +1189,7 @@
                         <i class="fas fa-file-invoice"></i>
                         <div>
                             <div class="tax-title">1099-DIV - Dividend Income</div>
-                            <div class="tax-year">Tax Year 2025</div>
+                            <div class="tax-year">Tax Year 2023</div>
                         </div>
                     </div>
                     <button class="tax-download" onclick="downloadTaxDoc('1099-div-2025')"><i
@@ -1310,39 +1310,39 @@
             // are pulled from baseline demo data + live transfers whose date falls
             // in that month (so statements reflect what actually happened).
             const STATEMENTS = [
-                { period: '2026-03', year: 2026, month: 3, account: 'checking', accountLabel: 'Checking Account', accountLast4: '7657' },
-                { period: '2026-02', year: 2026, month: 2, account: 'checking', accountLabel: 'Checking Account', accountLast4: '7657' },
-                { period: '2026-01', year: 2026, month: 1, account: 'savings', accountLabel: 'Savings Account', accountLast4: '5678' },
-                { period: '2025-12', year: 2025, month: 12, account: 'credit', accountLabel: 'Premium Credit Card', accountLast4: '5678' },
-                { period: '2025-11', year: 2025, month: 11, account: 'checking', accountLabel: 'Checking Account', accountLast4: '7657' }
+                { period: '2023-03', year: 2023, month: 3, account: 'checking', accountLabel: 'Checking Account', accountLast4: '7657' },
+                { period: '2023-02', year: 2023, month: 2, account: 'checking', accountLabel: 'Checking Account', accountLast4: '7657' },
+                { period: '2023-01', year: 2023, month: 1, account: 'savings', accountLabel: 'Savings Account', accountLast4: '5678' },
+                { period: '2022-12', year: 2022, month: 12, account: 'credit', accountLabel: 'Premium Credit Card', accountLast4: '5678' },
+                { period: '2022-11', year: 2022, month: 11, account: 'checking', accountLabel: 'Checking Account', accountLast4: '7657' }
             ];
 
             // Baseline per-statement transactions (so old statements still look real)
             const BASELINE_BY_PERIOD = {
-                '2026-03': [
-                    { date: '2026-03-15', description: 'Transfer to Sarah Johnson', amount: -250.00 },
-                    { date: '2026-03-14', description: 'Salary Deposit - ABC Corp', amount: 3500.00 },
-                    { date: '2026-03-12', description: 'Amazon.com', amount: -89.99 }
+                '2023-03': [
+                    { date: '2023-03-15', description: 'Transfer to Sarah Johnson', amount: -250.00 },
+                    { date: '2023-03-14', description: 'Salary Deposit - ABC Corp', amount: 3500.00 },
+                    { date: '2023-03-12', description: 'Amazon.com', amount: -89.99 }
                 ],
-                '2026-02': [
-                    { date: '2026-02-14', description: 'Salary Deposit - ABC Corp', amount: 3500.00 },
-                    { date: '2026-02-20', description: 'Groceries', amount: -142.80 },
-                    { date: '2026-02-25', description: 'Mobile Bill', amount: -65.00 }
+                '2023-02': [
+                    { date: '2023-02-14', description: 'Salary Deposit - ABC Corp', amount: 3500.00 },
+                    { date: '2023-02-20', description: 'Groceries', amount: -142.80 },
+                    { date: '2023-02-25', description: 'Mobile Bill', amount: -65.00 }
                 ],
-                '2026-01': [
-                    { date: '2026-01-14', description: 'Salary Deposit - ABC Corp', amount: 3500.00 },
-                    { date: '2026-01-18', description: 'Transfer from Checking', amount: 500.00 },
-                    { date: '2026-01-30', description: 'Interest Payment', amount: 32.15 }
+                '2023-01': [
+                    { date: '2023-01-14', description: 'Salary Deposit - ABC Corp', amount: 3500.00 },
+                    { date: '2023-01-18', description: 'Transfer from Checking', amount: 500.00 },
+                    { date: '2023-01-30', description: 'Interest Payment', amount: 32.15 }
                 ],
-                '2025-12': [
-                    { date: '2025-12-05', description: 'Amazon.com', amount: -189.50 },
-                    { date: '2025-12-12', description: 'The Italian Restaurant', amount: -78.50 },
-                    { date: '2025-12-24', description: 'Christmas Gift Purchase', amount: -245.00 }
+                '2022-12': [
+                    { date: '2022-12-05', description: 'Amazon.com', amount: -189.50 },
+                    { date: '2022-12-12', description: 'The Italian Restaurant', amount: -78.50 },
+                    { date: '2022-12-24', description: 'Christmas Gift Purchase', amount: -245.00 }
                 ],
-                '2025-11': [
-                    { date: '2025-11-14', description: 'Salary Deposit - ABC Corp', amount: 3500.00 },
-                    { date: '2025-11-16', description: 'Electric Company', amount: -145.67 },
-                    { date: '2025-11-22', description: 'Fuel', amount: -89.00 }
+                '2022-11': [
+                    { date: '2022-11-14', description: 'Salary Deposit - ABC Corp', amount: 3500.00 },
+                    { date: '2022-11-16', description: 'Electric Company', amount: -145.67 },
+                    { date: '2022-11-22', description: 'Fuel', amount: -89.00 }
                 ]
             };
 
